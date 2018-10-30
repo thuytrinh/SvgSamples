@@ -29,6 +29,6 @@
       android:layout_height="0dp"
       android:layout_weight="1"
       app:itemBinding="@{ItemBindings.create()}"
-      app:items="@{viewModel.items}" />
+      app:itemsWithSelectedIndex="@{viewModel.items}" />
   </LinearLayout>
 </layout>

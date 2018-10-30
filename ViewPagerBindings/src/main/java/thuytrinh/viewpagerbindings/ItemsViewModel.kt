@@ -4,14 +4,24 @@ import android.arch.lifecycle.MutableLiveData
 import java.util.*
 
 class ItemsViewModel {
-  val items = MutableLiveData<List<String>>().also {
-    it.postValue(emptyList())
+  val items = MutableLiveData<ItemsWithSelectedIndex<String>>().also {
+    it.postValue(ItemsWithSelectedIndex())
   }
-  val defaultSelectedIndex = 1
+
+  init {
+    generateItems()
+  }
 
   fun refresh() {
+    generateItems()
+  }
+
+  private fun generateItems() {
     val size = (5..10).random()
-    items.postValue((0..size).map { it.toString() })
+    val newItems = (0..size).map { it.toString() }
+    val newSelectedIndex = (1..newItems.lastIndex).random()
+
+    items.postValue(ItemsWithSelectedIndex(items = newItems, selectedIndex = newSelectedIndex))
   }
 
   private fun IntRange.random(): Int {

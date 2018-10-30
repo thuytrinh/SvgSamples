@@ -9,7 +9,8 @@ class ItemsActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val binding = setContentView<ActivityItemsBinding>(this, R.layout.activity_items)
-    binding.viewModel = ItemsViewModel()
+    val viewModel = ItemsViewModel()
+    binding.viewModel = viewModel
     binding.setLifecycleOwner(this)
   }
 }
