@@ -8,8 +8,13 @@ data class ItemsWithSelectedIndex<ItemType>(
   val selectedIndex: Int = 0
 ) {
   init {
-    require(selectedIndex >= 0 && selectedIndex <= items.lastIndex) {
-      "selectedIndex $selectedIndex must be in range of 0 to ${items.lastIndex}"
+    when {
+      items.isEmpty() -> require(selectedIndex == 0) {
+        "selectedIndex must be 0 (was $selectedIndex)"
+      }
+      else -> require(selectedIndex >= 0 && selectedIndex <= items.lastIndex) {
+        "selectedIndex must be in range of 0 to ${items.lastIndex} (was $selectedIndex)"
+      }
     }
   }
 }
