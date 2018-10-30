@@ -1,5 +1,10 @@
 # Bind items with a selected index into `ViewPager`
 
+## Requirements
+
+* [The Data Binding library](https://developer.android.com/topic/libraries/data-binding/)
+* [BindingCollectionAdapter](https://github.com/evant/binding-collection-adapter)
+
 Firstly, we define a data structure which has a bounds checking. This is to ensure that we make no mistake of passing a selected index which is out of bounds of the given `items`.
 
 ```kotlin
@@ -40,7 +45,7 @@ fun <ItemType> ViewPager.setItemsWithSelectedIndex(
 }
 ```
 
-## Usage
+## Sample usage
 
 In your ViewModel, declare a `MutableLiveData<ItemsWithSelectedIndex<String>>` (as an example that the items here are a list of `String`):
 
@@ -67,7 +72,7 @@ Binding into layout can be done like:
   app:itemsWithSelectedIndex="@{viewModel.items}" />
 ```
 
-With `ItemBindings` that looks like:
+With `ItemBindings` which can look like:
 
 ```kotlin
 object ItemBindings {
